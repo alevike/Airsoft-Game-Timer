@@ -48,5 +48,25 @@ You can upload the latest firmware to your Arduino Mega 2560 or to the custom ti
 - If you get errors, try lowering the baud rate (e.g., `-b 19200`).
 - The bootloader will not be erased with this method.
 
+## Hardware Compatibility
+
+This software is intended to be used with a specially designed Airsoft Game Timer board, available soon on Tindie. 
+
+**Tindie link placeholder:** [Tindie Store - Airsoft Game Timer Board](https://www.tindie.com/products/your-product-id/)
+
+The firmware can also be adapted for use with a standard Arduino Mega 2560 board, but some custom features (such as battery monitoring and soft power-off) will not be available.
+
+### Pin Connections (Base Arduino Mega 2560)
+
+| Module         | Pin(s)         | Notes                       |
+|----------------|----------------|-----------------------------|
+| Buzzer         | 25             | Digital output              |
+| NFC Module     | IRQ: 6, RESET: 7 | PN532, connect IRQ/RESET   |
+| LoRa Module    | AUX: 22, M0: 23, M1: 24 | Serial2, custom pins |
+| Keyboard (Keypad) | Rows: 37,36,35,34<br>Cols: 33,32,31,30 | 4x4 matrix keypad |
+| LED Pixel (WS2812) | DATA: 26     | NeoPixel/WS2812 strip       |
+
+For full pin mapping and advanced features, refer to the source code.
+
 ## License
 This project is licensed under CC BY-NC 4.0. See LICENSE for details.
