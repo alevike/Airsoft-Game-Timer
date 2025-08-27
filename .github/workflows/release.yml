@@ -35,7 +35,7 @@ jobs:
             echo "latest_tag=$latest_tag" >> $GITHUB_OUTPUT
           fi
 
-      - name: Calculate next version
+      - name: Calculate next available version
         id: next_version
         run: |
           tag="${{ steps.get_tag.outputs.latest_tag }}"
@@ -43,15 +43,24 @@ jobs:
             major=${BASH_REMATCH[1]}
             minor=${BASH_REMATCH[2]}
             patch=${BASH_REMATCH[3]}
-            minor=$((minor+1))
-            if [ "$minor" -ge 10 ]; then
-              major=$((major+1))
-              minor=0
-            fi
-            next_tag="v${major}.${minor}.0"
           else
-            next_tag="v1.0.0"
+            major=1
+            minor=0
+            patch=0
           fi
+          found=1
+          while [ $found -eq 1 ]; do
+            next_tag="v${major}.${minor}.0"
+            if git ls-remote --tags origin | grep -q "refs/tags/${next_tag}"; then
+              minor=$((minor+1))
+              if [ "$minor" -ge 10 ]; then
+                major=$((major+1))
+                minor=0
+              fi
+            else
+              found=0
+            fi
+          done
           echo "next_tag=$next_tag" >> $GITHUB_OUTPUT
 
       
@@ -75,8 +84,12 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git tag ${{ steps.next_version.outputs.next_tag }}
-          git push origin ${{ steps.next_version.outputs.next_tag }}
+          if ! git ls-remote --tags origin | grep -q "refs/tags/${{ steps.next_version.outputs.next_tag }}"; then
+            git tag ${{ steps.next_version.outputs.next_tag }}
+            git push origin ${{ steps.next_version.outputs.next_tag }}
+          else
+            echo "Tag ${{ steps.next_version.outputs.next_tag }} already exists, skipping tag creation."
+          fi
       
 
       - name: Create Release
