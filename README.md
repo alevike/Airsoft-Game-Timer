@@ -59,6 +59,7 @@ The firmware can also be adapted for use with a standard Arduino Mega 2560 board
 
 | Module         | Pin(s)         | Notes                       |
 |----------------|----------------|-----------------------------|
+| LCD module     | rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2 | No i2c backapck required |
 | Buzzer         | 25             | Digital output              |
 | NFC Module     | IRQ: 6, RESET: 7 | Standard i2c pins + IRQ/RESET   |
 | LoRa Module    | AUX: 22, M0: 23, M1: 24 | Serial2 + custom pins |
