@@ -7,12 +7,11 @@ This repo is under construction!
 ## Overview
 This project is an Arduino-based Airsoft Game Timer. It supports multiple game modes and is designed for DIY use. Commercial use is prohibited (see LICENSE).
 
-## Uploading Firmware to Arduino Mega 2560
-
-You can upload the latest firmware to your Arduino Mega 2560 or to the custom timer board via FTDI adapter using `avrdude` and the wiring protocol. This method preserves the bootloader.
+## Uploading Firmware to the Timer Board (*or Arduino Mega)
+You can upload the latest firmware to your Airsfot Timer board via FTDI adapter using `avrdude` and the wiring protocol. This method preserves the bootloader.
 
 ### Requirements
-- **Arduino Mega 2560**
+- **Timer Board (*or Arduino Mega)**
 - **ISP programmer or Arduino as ISP**
 - **avrdude** (AVR Downloader/UploaDEr)
 - **Latest firmware HEX file** (from the Releases section)
