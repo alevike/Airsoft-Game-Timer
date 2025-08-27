@@ -1,9 +1,9 @@
-name: Build and Release HEX on Merge
+name: Build and Auto-Release HEX
 
 on:
   push:
     branches:
-      - main  # Change to your default branch if different
+      - main
 
 jobs:
   build:
@@ -29,11 +29,47 @@ jobs:
           mkdir -p hexfiles
           find .pio/build -name "*.hex" -exec cp {} hexfiles/ \;
 
+      - name: Get latest tag
+        id: get_tag
+        run: |
+          latest_tag=$(git tag --list 'v*' --sort=-v:refname | head -n 1)
+          if [ -z "$latest_tag" ]; then
+            echo "latest_tag=v1.0.0" >> $GITHUB_OUTPUT
+          else
+            echo "latest_tag=$latest_tag" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Calculate next version
+        id: next_version
+        run: |
+          tag="${{ steps.get_tag.outputs.latest_tag }}"
+          if [[ $tag =~ ^v([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
+            major=${BASH_REMATCH[1]}
+            minor=${BASH_REMATCH[2]}
+            patch=${BASH_REMATCH[3]}
+            minor=$((minor+1))
+            if [ "$minor" -ge 10 ]; then
+              major=$((major+1))
+              minor=0
+            fi
+            next_tag="v${major}.${minor}.0"
+          else
+            next_tag="v1.0.0"
+          fi
+          echo "next_tag=$next_tag" >> $GITHUB_OUTPUT
+
+      - name: Create new tag
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git tag ${{ steps.next_version.outputs.next_tag }}
+          git push origin ${{ steps.next_version.outputs.next_tag }}
+
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: release-${{ github.run_id }}
-          name: Release ${{ github.run_id }}
+          tag_name: ${{ steps.next_version.outputs.next_tag }}
+          name: Release ${{ steps.next_version.outputs.next_tag }}
           files: hexfiles/*.hex
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
