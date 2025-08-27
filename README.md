@@ -51,7 +51,7 @@ This software is intended to be used with a specially designed Airsoft Game Time
 
 **Tindie link placeholder:** [Tindie Store - Airsoft Game Timer Board](https://www.tindie.com/products/your-product-id/)
 
-The firmware can also be adapted for use with a standard Arduino Mega 2560 board, but some custom features (such as battery monitoring and soft power-off) will not be available.
+The firmware can also be adapted for use with a standard Arduino Mega 2560 board, but some custom features (such as battery monitoring and software managed power-on/off) will not be available.
 
 ### Pin Connections (Base Arduino Mega 2560)
 
@@ -66,7 +66,7 @@ The firmware can also be adapted for use with a standard Arduino Mega 2560 board
 | Illuminated button leds | Red: 28, Green: 29 | | 
 | Wire sensing pins | Wire1: 49 , Wire2: 48, Wire3: 47, Wire4: 46, Common: GND or 45| used in the "Cut the wire game mode" |
 
-For full pin mapping and advanced features like battery monitoring or soft power-off, refer to the source code.
+For full pin mapping and advanced features like battery monitoring or software managed power-on/off, refer to the source code.
 
 ## License
 This project is licensed under CC BY-NC 4.0. See LICENSE for details.
