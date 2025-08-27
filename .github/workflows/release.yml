@@ -62,7 +62,7 @@ jobs:
           echo "#define RELEASE_VERSION \"${{ steps.next_version.outputs.next_tag }}\"" >> include/version.h
           echo "#endif" >> include/version.h
 
-      - name: Build project
+      - name: Build HEX files
         run: platformio run
 
       - name: Find HEX files
