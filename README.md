@@ -60,10 +60,10 @@ The firmware can also be adapted for use with a standard Arduino Mega 2560 board
 | Module         | Pin(s)         | Notes                       |
 |----------------|----------------|-----------------------------|
 | Buzzer         | 25             | Digital output              |
-| NFC Module     | IRQ: 6, RESET: 7 | PN532, connect IRQ/RESET   |
-| LoRa Module    | AUX: 22, M0: 23, M1: 24 | Serial2, custom pins |
+| NFC Module     | IRQ: 6, RESET: 7 | Standard i2c pins + IRQ/RESET   |
+| LoRa Module    | AUX: 22, M0: 23, M1: 24 | Serial2 + custom pins |
 | Keyboard (Keypad) | Rows: 37,36,35,34<br>Cols: 33,32,31,30 | 4x4 matrix keypad |
-| LED Pixel (WS2812) | DATA: 26     | NeoPixel/WS2812 strip       |
+| LED Pixel (WS2812) | DATA: 23, Clock: 24      | NeoPixel/WS2812 strip/Apa102..     |
 
 For full pin mapping and advanced features, refer to the source code.
 
