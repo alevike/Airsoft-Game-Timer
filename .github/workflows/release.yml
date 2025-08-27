@@ -25,21 +25,6 @@ jobs:
       - name: Install PlatformIO
         run: pip install platformio
       
-      - name: Write version header
-        run: |
-          echo "#ifndef VERSION_H" > include/version.h
-          echo "#define VERSION_H" >> include/version.h
-          echo "#define RELEASE_VERSION \"${{ steps.next_version.outputs.next_tag }}\"" >> include/version.h
-          echo "#endif" >> include/version.h
-
-      - name: Build project
-        run: platformio run
-
-      - name: Find HEX files
-        run: |
-          mkdir -p hexfiles
-          find .pio/build -name "*.hex" -exec cp {} hexfiles/ \;
-
       - name: Get latest tag
         id: get_tag
         run: |
@@ -69,6 +54,23 @@ jobs:
           fi
           echo "next_tag=$next_tag" >> $GITHUB_OUTPUT
 
+      
+      - name: Write version header
+        run: |
+          echo "#ifndef VERSION_H" > include/version.h
+          echo "#define VERSION_H" >> include/version.h
+          echo "#define RELEASE_VERSION \"${{ steps.next_version.outputs.next_tag }}\"" >> include/version.h
+          echo "#endif" >> include/version.h
+
+      - name: Build project
+        run: platformio run
+
+      - name: Find HEX files
+        run: |
+          mkdir -p hexfiles
+          find .pio/build -name "*.hex" -exec cp {} hexfiles/ \;
+
+      
       - name: Create new tag
         run: |
           git config user.name "github-actions"
