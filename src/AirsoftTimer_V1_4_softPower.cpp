@@ -616,7 +616,7 @@ void disarmedSplash(){
   {
     var = keypad.waitForKey();
     if(var == '#' ){
-      Bbipp(30);//tone(tonepin,2400,30);
+       Bbipp(30);//tone(tonepin,2400,30);
       //
       if(bpStatus){
         //startGameCount();
@@ -640,7 +640,7 @@ void disarmedSplash(){
     }  
     if(var == '*' ){
       restore_left_focus();
-      Bbipp(30);
+       Bbipp(30);
       software_Reset();
 
     }  
@@ -660,10 +660,9 @@ void explodeSplash(){
     lcd.setCursor(4,3);
     lcd.print(F("Press any key..."));
   WSredRGB();
-  for(int i = 100; i>0; i--)// 
-  {
-    Bbipp(20);
-    delay(20);
+  for(int i = 100; i>0; i--) {
+      Bbipp(20);
+      delay(20);
   }
   byte key = keypad.getKey();
   while(key == NO_KEY) {
@@ -685,7 +684,7 @@ void explodeSplash(){
   {
     var = keypad.waitForKey();
     if(var == '#' ){
-      if(soundEnable)Bbipp(30);//tone(tonepin,2400,30);
+      Bbipp(30);//tone(tonepin,2400,30);
       //
       if(bpStatus){
 //        startGameCount();
@@ -708,7 +707,7 @@ void explodeSplash(){
     }  
     if(var == '*' ){
       restore_left_focus();
-      if(soundEnable)Bbipp(30);
+      Bbipp(30);
       software_Reset(); // Memory freeing   
     }  
   } 

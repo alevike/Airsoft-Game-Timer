@@ -24,18 +24,18 @@ void menuPrincipal(){   //MAIN MENU
     }
     var = keypad.getKey();
     if(var == BT_UP){
-      if(soundEnable)Bbipp(30);// tone(tonepin,2400,30);
+      Bbipp(30);// tone(tonepin,2400,30);
       MainMenu.switch_focus(false);
       menu_system.update();
     }
     if(var == BT_DOWN){ //inc last param in case of menu item is added
-      if(soundEnable)Bbipp(30);//tone(tonepin,2400,30);
+      Bbipp(30);//tone(tonepin,2400,30);
       MainMenu.switch_focus(true);
       menu_system.update();
     }
 
     if(var == BT_SEL){
-      if(soundEnable)Bbipp(30); //tone(tonepin,2400,30);
+      Bbipp(30); //tone(tonepin,2400,30);
       MainMenu.call_function(1);
     }
     
@@ -58,31 +58,31 @@ void menuGameconfig() {
     }
     var = keypad.getKey();
     if(var == BT_UP) {
-      if(soundEnable)Bbipp(30);
+      Bbipp(30);
       ConfigGameMenu.switch_focus(false);
       menu_system.update();
     }
     if(var == BT_DOWN) {
-      if(soundEnable)Bbipp(30);//tone(tonepin,2400,30);
+      Bbipp(30);//tone(tonepin,2400,30);
       ConfigGameMenu.switch_focus(true);
       menu_system.update();
     }
     if(var == BT_RIGHT){
-      if(soundEnable)Bbipp(30);// tone(tonepin,2400,30);
+      Bbipp(30);// tone(tonepin,2400,30);
       ConfigGameMenu.call_function(increase);
       menu_system.update();
     }
     if(var == BT_LEFT){ //inc last param in case of menu item is added
-      if(soundEnable)Bbipp(30);//tone(tonepin,2400,30);
+      Bbipp(30);//tone(tonepin,2400,30);
       ConfigGameMenu.call_function(decrease);
       menu_system.update();
     }
     if(var == BT_SEL){
-      if(soundEnable)Bbipp(30); //tone(tonepin,2400,30);
+      Bbipp(30); //tone(tonepin,2400,30);
       gameLauncher();
     }
     if(var == BT_CANCEL){
-      if(soundEnable)Bbipp(30); //tone(tonepin,2400,30);
+      Bbipp(30); //tone(tonepin,2400,30);
       menuPrincipal();
     } 
   }
@@ -104,32 +104,32 @@ void SetupMenu() {
     var = keypad.getKey();
     //var = keypad.waitForKey();
     if(var == BT_UP) {
-      if(soundEnable)Bbipp(30);
+      Bbipp(30);
       Setup_Menu.switch_focus(false);
       menu_system.update();
     }
     if(var == BT_DOWN) {
-      if(soundEnable)Bbipp(30);//tone(tonepin,2400,30);
+      Bbipp(30);//tone(tonepin,2400,30);
       Setup_Menu.switch_focus(true);
       menu_system.update();
     }
     if(var == BT_RIGHT){
-      if(soundEnable)Bbipp(30);// tone(tonepin,2400,30);
+      Bbipp(30);// tone(tonepin,2400,30);
       Setup_Menu.call_function(increase);
       menu_system.update();
     }
     if(var == BT_LEFT){ //inc last param in case of menu item is added
-      if(soundEnable)Bbipp(30);//tone(tonepin,2400,30);
+      Bbipp(30);//tone(tonepin,2400,30);
       Setup_Menu.call_function(decrease);
       menu_system.update();
     }
     if(var == BT_SEL){
-      if(soundEnable)Bbipp(30); //tone(tonepin,2400,30);
+      Bbipp(30); //tone(tonepin,2400,30);
       writeSettingsEEPROM();
       menuPrincipal();
     }
     if(var == BT_CANCEL){
-      if(soundEnable)Bbipp(30); //tone(tonepin,2400,30);
+      Bbipp(30); //tone(tonepin,2400,30);
       menuPrincipal();
     } 
   }
@@ -151,7 +151,7 @@ void menuConfig_wires() {
     var = keypad.getKey();
     //var = keypad.waitForKey();
     if(var == BT_UP) {
-      if(soundEnable)Bbipp(30);
+      Bbipp(30);
       ConfigWiresMenu.switch_focus(false);
       menu_system.update();
     }
@@ -161,7 +161,7 @@ void menuConfig_wires() {
       menu_system.update();
     }
     if(var == BT_RIGHT){
-      if(soundEnable)Bbipp(30);// tone(tonepin,2400,30);
+      Bbipp(30);// tone(tonepin,2400,30);
       ConfigWiresMenu.call_function(increase);
       menu_system.update();
     }
@@ -171,11 +171,11 @@ void menuConfig_wires() {
       menu_system.update();
     }
     if(var == BT_SEL){
-      if(soundEnable)Bbipp(30); //tone(tonepin,2400,30);
+      Bbipp(30); //tone(tonepin,2400,30);
       gameLauncher();
     }
     if(var == BT_CANCEL){
-      if(soundEnable)Bbipp(30); //tone(tonepin,2400,30);
+      Bbipp(30); //tone(tonepin,2400,30);
       menuPrincipal();
     } 
   }

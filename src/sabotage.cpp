@@ -88,7 +88,7 @@ void sabotage(){
       lcd.clear();
       lcd.setCursor(2,0);
       lcd.print(F("Code Error!"));
-      if(soundEnable)Bbipp(200); //tone(tonepin,errorTone,200);
+      Bbipp(200); //tone(tonepin,errorTone,200);
       delay(500);
       cls();
     }
@@ -114,11 +114,11 @@ void sabotage(){
 
         if( timeCalcVar >= 0 && timeCalcVar <= 40)
         {
-          if(soundEnable)bipp(200); //tone(tonepin,tonoAlarma1,200);
+          bipp(200); //tone(tonepin,tonoAlarma1,200);
         }
         if(timeCalcVar >= 480 && timeCalcVar <= 520)
         {
-          if(soundEnable)bipp(200); //tone(tonepin,tonoAlarma2,200);
+          bipp(200); //tone(tonepin,tonoAlarma2,200);
         }
         unsigned long seconds= millis() - xTime;
         percent = (seconds)/(ACTIVATESECONDS*10);
@@ -173,7 +173,7 @@ void destroySabotage(){
     if(timeCalcVar >= 0 && timeCalcVar <= 40)
     {
       WSredRGB(); 
-      if(soundEnable)bipp(200); //tone(tonepin,tonoActivada,largoTono);
+      bipp(200); //tone(tonepin,tonoActivada,largoTono);
     }
     if(timeCalcVar >= 180 && timeCalcVar <= 220){
       WSclsRGB();
@@ -233,7 +233,7 @@ void destroySabotage(){
       lcd.clear();
       lcd.setCursor(2,0);
       lcd.print(F("Code Error!"));
-      if(soundEnable)Bbipp(200);// tone(tonepin,errorTone,200);
+      Bbipp(200);// tone(tonepin,errorTone,200);
       delay(500);
       cls();
     }
@@ -260,11 +260,11 @@ void destroySabotage(){
         timeCalcVar=(millis()- xTime)%1000;
         if(timeCalcVar>= 0 && timeCalcVar <= 20)
         { 
-          if(soundEnable)bipp(200);//tone(tonepin,tonoAlarma1,200);
+          bipp(200);//tone(tonepin,tonoAlarma1,200);
         }
         if(timeCalcVar >= 480 && timeCalcVar <= 500)
         {
-          if(soundEnable)bipp(200); //tone(tonepin,tonoAlarma2,200);  
+          bipp(200); //tone(tonepin,tonoAlarma2,200);  
         }
         unsigned long seconds=(millis()- xTime);
         percent= seconds/(ACTIVATESECONDS*10);

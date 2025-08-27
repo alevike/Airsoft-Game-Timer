@@ -103,7 +103,7 @@ void setNewPass(){
       lcd.clear();
       lcd.setCursor(0, 0);
       lcd.print(F("ERROR Dont Match!"));
-      if(soundEnable)Bbipp(200);//tone(tonepin,errorTone,200);
+      Bbipp(200);
       delay(1800); 
     }
   }

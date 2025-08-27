@@ -80,7 +80,7 @@ void search(){
       lcd.clear();
       lcd.setCursor(4,2);
       lcd.print(F("Code Error!"));
-      if(soundEnable)Bbipp(200); //tone(tonepin,errorTone,200);
+      Bbipp(200); //tone(tonepin,errorTone,200);
       delay(500);
       cls();
     }
@@ -103,11 +103,11 @@ void search(){
 
         if( timeCalcVar >= 0 && timeCalcVar <= 40)
         {
-          if(soundEnable)bipp(200); //tone(tonepin,tonoAlarma1,200);
+          bipp(200); //tone(tonepin,tonoAlarma1,200);
         }
         if(timeCalcVar >= 480 && timeCalcVar <= 520)
         {
-          if(soundEnable)bipp(200); //tone(tonepin,tonoAlarma2,200);
+          bipp(200); //tone(tonepin,tonoAlarma2,200);
         }
 
         unsigned long seconds= millis() - xTime;
@@ -172,7 +172,7 @@ void destroy(){
     if(timeCalcVar >= 0 && timeCalcVar <= 40)
     {
       WSredRGB();
-      if(soundEnable)bipp(largoTono); //tone(tonepin,tonoActivada,largoTono);
+      bipp(largoTono); //tone(tonepin,tonoActivada,largoTono);
     }
     if(timeCalcVar >= 180 && timeCalcVar <= 220){
       WSclsRGB();
@@ -239,7 +239,7 @@ void destroy(){
       lcd.clear();
       lcd.setCursor(3,0);
       lcd.print(F("Code Error!"));
-      if(soundEnable)bipp(200); //tone(tonepin,errorTone,200);
+      bipp(200); //tone(tonepin,errorTone,200);
       delay(500);
       cls();
     }
@@ -267,11 +267,11 @@ void destroy(){
         timeCalcVar=(millis()- xTime)%1000;
         if(timeCalcVar>= 0 && timeCalcVar <= 20)
         {
-          if(soundEnable)bipp(200); //tone(tonepin,tonoAlarma1,200);
+          bipp(200); //tone(tonepin,tonoAlarma1,200);
         }
         if(timeCalcVar >= 480 && timeCalcVar <= 500)
         {
-          if(soundEnable)bipp(200); //tone(tonepin,tonoAlarma2,200);
+          bipp(200); //tone(tonepin,tonoAlarma2,200);
         }
         unsigned long seconds=(millis()- xTime);
         percent= seconds/(ACTIVATESECONDS*10);

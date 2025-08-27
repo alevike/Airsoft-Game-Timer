@@ -143,12 +143,11 @@ void domination_lora(){
 
         if( timeCalcVar >= 0 && timeCalcVar <= 20)
         {
-          if(soundEnable)bipp(200);//tone(tonepin,tonoAlarma1,200);
-
+          bipp(200);
         }
         if(timeCalcVar >= 480 && timeCalcVar <= 500)
         {
-          if(soundEnable)bipp(200);//tone(tonepin,tonoAlarma2,200);
+          bipp(200);
         }
         
         unsigned long seconds= millis() - xTime;
@@ -199,11 +198,11 @@ void domination_lora(){
 
         if( timeCalcVar >= 0 && timeCalcVar <= 20)
         {
-          if(soundEnable)bipp(200);//tone(tonepin,tonoAlarma1,200);
+          bipp(200);//tone(tonepin,tonoAlarma1,200);
         }
         if(timeCalcVar >= 480 && timeCalcVar <= 500)
         {
-          if(soundEnable)bipp(200);//tone(tonepin,tonoAlarma2,200);
+          bipp(200);//tone(tonepin,tonoAlarma2,200);
         }
 
         unsigned long seconds= millis() - xTime;
@@ -244,11 +243,11 @@ void domination_lora(){
 
         if( timeCalcVar >= 0 && timeCalcVar <= 20)
         {
-          if(soundEnable)bipp(200);//tone(tonepin,tonoAlarma1,200);
+          bipp(200);//tone(tonepin,tonoAlarma1,200);
         }
         if(timeCalcVar >= 480 && timeCalcVar <= 500)
         {
-          if(soundEnable)bipp(200);//tone(tonepin,tonoAlarma2,200);
+          bipp(200);//tone(tonepin,tonoAlarma2,200);
         }
 
         unsigned long seconds= millis() - xTime;
@@ -310,7 +309,7 @@ void gameOver2(){
       var = keypad.getKey();
       runLoop();
       if(var == '5' ){
-          if(soundEnable)Bbipp(50);
+          Bbipp(50);
           if (lora_send(203, 0, 0)) {
               software_Reset();
               break;

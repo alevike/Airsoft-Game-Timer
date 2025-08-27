@@ -232,7 +232,7 @@ void startGameCount(){
   lcd.setCursor(5,0);
   lcd.print(F("Starting in"));
   for(int i = 5; i > 0 ; i--){ // START COUNT GAME INIT
-    if(soundEnable)Bbipp(100);  // -100 from delay
+    Bbipp(100);  // -100 from delay
     big.writeint(1,9, i, 1, false);
     delay(900);
   }

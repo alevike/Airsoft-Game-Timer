@@ -6,14 +6,18 @@ void clearBuzzer(void)
 
 void bipp(int duration) //non-blocking active buzzer
 {
-   digitalWrite(tonepin, HIGH);
-   timer.setTimeout(duration, clearBuzzer);
-    
+   if(soundEnable) {
+    digitalWrite(tonepin, HIGH);
+    timer.setTimeout(duration, clearBuzzer);
+   }
+
 }
 
 void Bbipp(int duration) //blocking active buzzer - used in menu
 {
-  digitalWrite(tonepin, HIGH);
-  delay(duration);
-  digitalWrite(tonepin, LOW);
+  if(soundEnable) {
+    digitalWrite(tonepin, HIGH);
+    delay(duration);
+    digitalWrite(tonepin, LOW);
+  }
 }

@@ -76,7 +76,7 @@ void wireCut(){
       lcd.clear();
       lcd.setCursor(3,0);
       lcd.print(F("Code Error!"));
-      if(soundEnable)Bbipp(200); //tone(tonepin,errorTone,200);
+      Bbipp(200); //tone(tonepin,errorTone,200);
       delay(500);
       cls();
     }
@@ -112,7 +112,7 @@ void destroy2(){
     if(timeCalcVar >= 0 && timeCalcVar <= 40)
     {
       WSredRGB();
-      if(soundEnable)bipp(largoTono); //tone(tonepin,tonoActivada,largoTono);
+      bipp(largoTono); //tone(tonepin,tonoActivada,largoTono);
     }
     if(timeCalcVar >= 180 && timeCalcVar <= 220){
       WSclsRGB();
@@ -199,7 +199,7 @@ void destroy2(){
       lcd.clear();
       lcd.setCursor(3,0);
       lcd.print(F("Code Error!"));
-      if(soundEnable)bipp(200); //tone(tonepin,errorTone,200);
+      bipp(200); //tone(tonepin,errorTone,200);
       delay(500);
       cls();
     }
