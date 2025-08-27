@@ -66,9 +66,9 @@ The firmware can also be adapted for use with a standard Arduino Mega 2560 board
 | Keyboard (Keypad) | Rows: 37,36,35,34<br>Cols: 33,32,31,30 | 4x4 matrix keypad |
 | LED Pixel (WS2812) | DATA: 23, Clock: 24      | NeoPixel/WS2812 strip/Apa102..     |
 | Illuminated button leds | Red: 28, Green: 29 | | 
-| Wire sensing pins | Wire1: 49 , Wire2: 48, Wire3: 47, Wire4: 46, Commond: GND or 45| used in the "Cut the wire game mode" |
+| Wire sensing pins | Wire1: 49 , Wire2: 48, Wire3: 47, Wire4: 46, Common: GND or 45| used in the "Cut the wire game mode" |
 
-For full pin mapping and advanced features, refer to the source code.
+For full pin mapping and advanced features like battery monitoring or soft power-off, refer to the source code.
 
 ## License
 This project is licensed under CC BY-NC 4.0. See LICENSE for details.
