@@ -1,9 +1,9 @@
-name: Build and Release HEX
+name: Build and Release HEX on Merge
 
 on:
   push:
-    tags:
-      - 'v*'  # Triggers on tags like v1.0.0
+    branches:
+      - main  # Change to your default branch if different
 
 jobs:
   build:
@@ -32,6 +32,8 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ github.sha }}
+          name: Release ${{ github.sha }}
           files: hexfiles/*.hex
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
