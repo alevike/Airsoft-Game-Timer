@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'include/**'
+      - 'lib/**'
+      - 'src/**'
 
 jobs:
   build:
@@ -20,6 +24,13 @@ jobs:
 
       - name: Install PlatformIO
         run: pip install platformio
+      
+      - name: Write version header
+        run: |
+          echo "#ifndef VERSION_H" > include/version.h
+          echo "#define VERSION_H" >> include/version.h
+          echo "#define RELEASE_VERSION \"${{ steps.next_version.outputs.next_tag }}\"" >> include/version.h
+          echo "#endif" >> include/version.h
 
       - name: Build project
         run: platformio run
@@ -64,6 +75,7 @@ jobs:
           git config user.email "github-actions@github.com"
           git tag ${{ steps.next_version.outputs.next_tag }}
           git push origin ${{ steps.next_version.outputs.next_tag }}
+      
 
       - name: Create Release
         uses: softprops/action-gh-release@v2

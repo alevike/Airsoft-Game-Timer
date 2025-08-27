@@ -1,4 +1,5 @@
 #include "AirsoftTimer_V1_4_softPower.h"
+#include "version.h"
 #include "LoRa_E32.h"
 #include <SPI.h>
 #include <avr/io.h>
@@ -327,7 +328,8 @@ void setup(){
       lcd.setCursor(0,0);
       lcd.print(F("     Game Timer"));
       lcd.setCursor(7,2);
-      lcd.print(F("SW.Ver.: 2.1"));
+      lcd.print(F("SW.Ver.: "));
+      lcd.print(RELEASE_VERSION);
       lcd.setCursor(7,3);
       lcd.print(F("HW.Ver.: 1.7"));
       for (int i = 0; i <= 2; i++) {
