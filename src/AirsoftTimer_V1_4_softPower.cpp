@@ -9,7 +9,7 @@ volatile bool powerButtonReleased = false;
 volatile unsigned long powerPressedTime = 0;
 volatile unsigned long powerReleasedTime = 0;
 
-//Store soft reboot flag
+//Store soft reboot flag 
 volatile uint8_t soft_reboot_flag __attribute__((section(".noinit")));
 boolean softBoot = false;
 
