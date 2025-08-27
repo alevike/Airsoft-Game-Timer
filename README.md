@@ -1,3 +1,52 @@
 # Airsoft-Timer---Open-Source-version
 
 This repo is under construction!
+
+# Airsoft Game Timer
+
+## Overview
+This project is an Arduino-based Airsoft Game Timer. It supports multiple game modes and is designed for DIY use. Commercial use is prohibited (see LICENSE).
+
+## Uploading Firmware to Arduino Mega 2560
+
+You can upload the latest firmware to your Arduino Mega 2560 or to the custom timer board via FTDI adapter using `avrdude` and the wiring protocol. This method preserves the bootloader.
+
+### Requirements
+- **Arduino Mega 2560**
+- **ISP programmer or Arduino as ISP**
+- **avrdude** (AVR Downloader/UploaDEr)
+- **Latest firmware HEX file** (from the Releases section)
+
+### Download avrdude
+- Official site: [https://www.nongnu.org/avrdude/](https://www.nongnu.org/avrdude/)
+- Windows users: Download the ZIP from [https://github.com/avrdudes/avrdude/releases](https://github.com/avrdudes/avrdude/releases)
+- Extract the ZIP to a folder, e.g. `C:\Users\YourName\Desktop\avrdude`
+
+### Download the Latest Firmware
+1. Go to the [Releases](https://github.com/alevike/Airsoft-Game-Timer/releases) page of this repository.
+2. Download the latest `firmware.hex` file.
+3. Place `firmware.hex` in the same folder as `avrdude.exe`.
+
+### Upload Procedure
+1. Connect your Board to your PC via ISP (or use Arduino as ISP).
+2. Open a command prompt or PowerShell in the folder where `avrdude.exe` and `firmware.hex` are located.
+3. Run the following command (replace `COM12` with your actual port):
+
+```powershell
+./avrdude.exe -D -c wiring -p m2560 -P COM12 -b 115200 -U flash:w:firmware.hex:i
+```
+
+- `-D` disables chip erase (preserves bootloader)
+- `-c wiring` uses the wiring/Arduino ISP protocol
+- `-p m2560` specifies the Mega 2560 chip
+- `-P COM12` is your serial port (check Device Manager)
+- `-b 115200` is the baud rate
+- `-U flash:w:firmware.hex:i` writes the firmware
+
+### Notes
+- Make sure your programmer and wiring are correct.
+- If you get errors, try lowering the baud rate (e.g., `-b 19200`).
+- The bootloader will not be erased with this method.
+
+## License
+This project is licensed under CC BY-NC 4.0. See LICENSE for details.
