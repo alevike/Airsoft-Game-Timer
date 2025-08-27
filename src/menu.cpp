@@ -88,6 +88,7 @@ void menuGameconfig() {
   }
 }
 
+
 void SetupMenu() {
   readerDisabled = true;
   if (customCharset != 0) restore_left_focus();
@@ -134,6 +135,7 @@ void SetupMenu() {
   }
 }
 
+
 void menuConfig_wires() {
   readerDisabled = true;
   if (customCharset != 0) restore_left_focus();
@@ -179,13 +181,17 @@ void menuConfig_wires() {
   }
 }
 
+
 void blankFunction() {
     return;
 }
 
+
 void menu_inc_gametime(){
   GAMEMINUTES++;
 }
+
+
 void menu_inc_EEPROM_gametime() {
   EEPROM_GAMEMINUTES++;
 }
@@ -194,6 +200,8 @@ void menu_inc_EEPROM_gametime() {
 void menu_dec_gametime(){
   if (GAMEMINUTES >= 2)GAMEMINUTES--;
 }
+
+
 void menu_dec_EEPROM_gametime() {
   if (EEPROM_GAMEMINUTES >= 2)EEPROM_GAMEMINUTES--;
 }
@@ -202,25 +210,38 @@ void menu_dec_EEPROM_gametime() {
 void menu_inc_bombtime(){
   if (BOMBMINUTES < 1000)BOMBMINUTES++;
 }
+
+
 void menu_inc_EEPROM_bombtime() {
   if (EEPROM_BOMBMINUTES < 1000)EEPROM_BOMBMINUTES++;
 }
+
+
 void menu_dec_bombtime(){
   if (BOMBMINUTES >= 2)BOMBMINUTES--;
 }
+
+
 void menu_dec_EEPROM_bombtime() {
   if (EEPROM_BOMBMINUTES >= 2)EEPROM_BOMBMINUTES--;
 }
 
+
 void menu_inc_armtime(){
   if (ACTIVATESECONDS < 1000)ACTIVATESECONDS++;
 }
+
+
 void menu_inc_EEPROM_armtime() {
   if (EEPROM_ACTIVATESECONDS < 1000)EEPROM_ACTIVATESECONDS++;
 }
+
+
 void menu_dec_armtime(){
   if (ACTIVATESECONDS >= 2)ACTIVATESECONDS--;
 }
+
+
 void menu_dec_EEPROM_armtime() {
   if (EEPROM_ACTIVATESECONDS >= 2)EEPROM_ACTIVATESECONDS--;
 }
@@ -232,6 +253,7 @@ void menu_dec_hotWire(){
   if (detonationWire > 1)detonationWire--;
 }
 
+
 void menu_inc_defuseWire(){
   if (defuseWire < 4)defuseWire++;
   if (defuseWire == detonationWire){
@@ -240,6 +262,8 @@ void menu_inc_defuseWire(){
   }
   
 }
+
+
 void menu_dec_defuseWire(){
   if (defuseWire > 1)defuseWire--;
   if (defuseWire == detonationWire) {
@@ -248,6 +272,7 @@ void menu_dec_defuseWire(){
   }
 }
 
+
 void switch_autoArm() {
   if (autoArm == false) {
     autoArm = true;
@@ -255,6 +280,8 @@ void switch_autoArm() {
     autoArm = false;
   }
 }
+
+
 void blink_autoArm() {
   switch_autoArm();
   if (autoArm == false) {
@@ -264,6 +291,7 @@ void blink_autoArm() {
   }
 }
 
+
 void switch_sound() {
   if (soundEnable == false) {
     soundEnable = true;
@@ -271,6 +299,8 @@ void switch_sound() {
     soundEnable = false;
   }
 }
+
+
 void blink_sound() {
   switch_sound();
   if (soundEnable == false) {
@@ -280,6 +310,7 @@ void blink_sound() {
   }
 }
 
+
 void EEPROM_switch_sound() {
   if (EEPROM_SOUND == false) {
     EEPROM_SOUND = true;
@@ -287,6 +318,8 @@ void EEPROM_switch_sound() {
     EEPROM_SOUND = false;
   }
 }
+
+
 void EEPROM_blink_sound() {
   EEPROM_switch_sound();
   if (EEPROM_SOUND == false) {
@@ -296,6 +329,7 @@ void EEPROM_blink_sound() {
   }
 }
 
+
 void switch_pass() {
   if (passwordEnable == false) {
     passwordEnable = true;
@@ -303,6 +337,7 @@ void switch_pass() {
     passwordEnable = false;
   }
 }
+
 
 void blink_pass() {
   switch_pass();
@@ -315,6 +350,7 @@ void blink_pass() {
     setNewPass();
   }
 }
+
 
 void gameLauncher() {
   if (sdStatus == true) {
@@ -356,6 +392,7 @@ void gameLauncher() {
   }
 }
 
+
 void sdStart() {
   sdStatus=true;
   saStatus=false;
@@ -367,6 +404,7 @@ void sdStart() {
   menuGameconfig();
 }
 
+
 void saStart() {
   sdStatus=false;
   saStatus=true;
@@ -376,6 +414,7 @@ void saStart() {
   bpStatus=false;
   menuGameconfig();
 }
+
 
 void doStart() {
   sdStatus=false;
@@ -387,6 +426,7 @@ void doStart() {
   menuGameconfig();
 }
 
+
 void doStart_lora() {
   sdStatus=false;
   saStatus=false;
@@ -396,6 +436,7 @@ void doStart_lora() {
   bpStatus=false;
   menuGameconfig();
 }
+
 
 void wcStart() {
   sdStatus=false;
@@ -407,6 +448,7 @@ void wcStart() {
   menuGameconfig();
 }
 
+
 void bpStart() {
   sdStatus=false;
   saStatus=false;
@@ -416,6 +458,7 @@ void bpStart() {
   bpStatus=true;
   menuGameconfig();
 }
+
 
 void StartUpCheck() {
     cls();
@@ -453,6 +496,7 @@ void StartUpCheck() {
         }
     } 
 }
+
 
 void batteryPage() {
   batteryManager.displayBatteryPage();

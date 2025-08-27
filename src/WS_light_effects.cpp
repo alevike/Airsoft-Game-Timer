@@ -1,4 +1,6 @@
 #include "WS_light_effects.h"
+
+
 void WSwriteProcent (int procent, int team, int action) {
    int LedsOn = map(procent, 0, 100, 0, 12);
 
@@ -56,6 +58,7 @@ void WSwriteProcent (int procent, int team, int action) {
   FastLED.show();
 }
 
+
 void WSgreenRGB() {
   for (int i=0; i < 12; i++) {
     leds[i] = CRGB::Green;
@@ -63,6 +66,7 @@ void WSgreenRGB() {
   }
   FastLED.show();
 }
+
 
 void WSredRGB() {
   for (int i=0; i < 12; i++) {
@@ -72,6 +76,7 @@ void WSredRGB() {
   FastLED.show();
 }
 
+
 void WSblueRGB() {
   for (int i=0; i < 12; i++) {
     leds[i] = CRGB::DarkSlateGrey;
@@ -80,6 +85,7 @@ void WSblueRGB() {
   FastLED.show();
 }
 
+
 void WSclsRGB() {
   for (int i=0; i < 12; i++) {
     leds[i] = CRGB::Black;
@@ -87,6 +93,7 @@ void WSclsRGB() {
   }
     FastLED.show();
 }
+
 
 void WSfireEffect() {
   // Array of temperature readings at each simulation cell
@@ -121,7 +128,6 @@ void WSfireEffect() {
       leds[pixelnumber] = color;
     }
 }
-
 
 
 // Pacifica
@@ -171,6 +177,7 @@ void pacifica_loop()
   pacifica_deepen_colors();
 }
 
+
 // Add one layer of waves into the led array
 void pacifica_one_layer( CRGBPalette16& p, uint16_t cistart, uint16_t wavescale, uint8_t bri, uint16_t ioff)
 {
@@ -188,6 +195,7 @@ void pacifica_one_layer( CRGBPalette16& p, uint16_t cistart, uint16_t wavescale,
     leds[i] += c;
   }
 }
+
 
 // Add extra 'white' to areas where the four layers of light have lined up brightly
 void pacifica_add_whitecaps()
@@ -207,6 +215,7 @@ void pacifica_add_whitecaps()
   }
 }
 
+
 // Deepen the blues and greens
 void pacifica_deepen_colors()
 {
@@ -216,6 +225,7 @@ void pacifica_deepen_colors()
     leds[i] |= CRGB( 2, 5, 7);
   }
 }
+
 
 void halfTimeWS()
 { 

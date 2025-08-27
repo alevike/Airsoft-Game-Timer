@@ -27,6 +27,7 @@ bool detectLoRaModule() {
   }
 }
 
+
 void restoreLoraConfig() {
   ResponseStructContainer c;
   c = e32ttl.getConfiguration();
@@ -52,6 +53,8 @@ void restoreLoraConfig() {
   delay(2000);
   ParametersPrint();
 }
+
+
 void ParametersPrint() {
   //Serial.println("----------------------------------------");
   ResponseStructContainer c;
@@ -103,8 +106,7 @@ void ParametersPrint() {
   
 }
 
-
-  /*
+  /* Notes: 
    * struct Message {
         byte myID; = sender ID
         byte remoteID; = destination ID
@@ -144,6 +146,7 @@ void ParametersPrint() {
 
 
 //lora_send(byte actionToSend, byte actionValueToSend, byte destinationID)
+
 
 void loraCallRemote(byte actionToSend, byte actionValueToSend) {
   if (lora_myOwnID != 100) {
@@ -283,7 +286,8 @@ void loraCallRemote(byte actionToSend, byte actionValueToSend) {
       }
    }
 } 
-  
+ 
+
 void loraSyncCapture(byte receivedActionID) {
   lora_sendACK(receivedActionID);
   loraTimeNow = millis()/1000;
@@ -438,16 +442,8 @@ void loraSyncCapture(byte receivedActionID) {
 
 void loraReceiveBroadcast() {
   if (e32ttl.available() >= sizeof(Message)){
-    
     ResponseStructContainer rsc = e32ttl.receiveMessage(sizeof(Message));
     struct Message message = *(Message*) rsc.data;
-    //cls();
-    //lcd.setCursor(0,0);
-    //lcd.print(F("Received a message"));
-    //lcd.setCursor(0,1); lcd.print(F("RemoteID:")); lcd.print(message.myID);
-    //lcd.setCursor(0,2); lcd.print(F("DestinationID:"));lcd.print(message.remoteID);
-    //lcd.setCursor(0,3); lcd.print(F("Action:")); lcd.print(message.actionRequested);
-    //delay(300);
     switch (message.actionRequested) {
       case 0:
         if (message.myID == 100 and lora_myOwnID == 1) {
@@ -540,12 +536,9 @@ void loraReceiveBroadcast() {
           break;
     }
     free(rsc.data);
-    //delay(500);
-    //cls();
-    //50    - Domination - send game time 
-    //51    - Domination - send arm time
   }
 }
+
 
 void lora_sendACK(byte actionToACK) {
   message.actionRequested = actionToACK;
@@ -553,21 +546,14 @@ void lora_sendACK(byte actionToACK) {
   e32ttl.sendBroadcastFixedMessage(0x02,&message, sizeof(Message));
 }
 
+
 boolean lora_send(byte actionToSend, int actionValueToSend, byte destinationID) {
   boolean ack = false;
   unsigned long ack_millis;
   byte maxRetry = 3; // retry time 
   byte retry = 1;    // retry counter
-/*    byte myID;
- *   byte remoteID;
- *   byte actionRequested; 
- *   byte actionValue;
- *   unsigned long greenTime;
- *   unsigned long redTime;
- *   
- *   250   - ACK message
- */
- //Prepare data
+
+  //Prepare data
   message.myID = lora_myOwnID;
   message.remoteID = destinationID;
   message.actionRequested = actionToSend;

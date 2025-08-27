@@ -1,4 +1,6 @@
 #include "nfc_utils.h"
+
+
 void startListeningToNFC() {
   // Reset our IRQ indicators
   irqPrev = irqCurr = HIGH;
@@ -6,6 +8,7 @@ void startListeningToNFC() {
   //lcd.println("Waiting for an ISO14443A Card ...");
   nfc.startPassiveTargetIDDetection(PN532_MIFARE_ISO14443A);
 }
+
 
 void handleCardDetected() {
   uint8_t success = false;
@@ -148,6 +151,7 @@ void handleCardDetected() {
   readerDisabled = true;
 }
 
+
 void checkCard() {
   if (nfcEnabled) {
       if (readerDisabled) {
@@ -171,7 +175,9 @@ void checkCard() {
   }
 }
 
+
 void(* resetFunc) (void) = 0;
+
 
 void NFCCardSetupWizard() {
   uint32_t cardid1;
@@ -302,6 +308,7 @@ void NFCCardSetupWizard() {
   SetupMenu();
 }
 
+
 void NFCPrintInfo() {
   cls();
   uint32_t versiondata = nfc.getFirmwareVersion();
@@ -324,6 +331,7 @@ void NFCPrintInfo() {
     key = keypad.getKey();
   }
 }
+
 
 bool isNFCPresent() {
   uint32_t versiondata = nfc.getFirmwareVersion(); // Check for NFC module firmware

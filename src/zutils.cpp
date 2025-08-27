@@ -1,9 +1,6 @@
-// These variables should be declared as 'extern' in zutils.cpp, and defined in your main file:
-// extern volatile bool powerButtonReleased;
-// extern volatile unsigned long powerPressedTime;
-// extern volatile unsigned long powerReleasedTime;
-
 #include "zutils.h"
+
+
 void drawPorcent(byte percent){
   if (customCharset != 1) setup_progressbar();
   /* Move the cursor to the second line */ 
@@ -56,8 +53,8 @@ void drawPorcent(byte percent){
 
 }
 
-void  setup_progressbar()  {
 
+void  setup_progressbar()  {
   /* Save custom characters in LCD display memory */
   lcd.createChar (0,START_DIV_0_OF_1 );
   lcd.createChar (1,START_DIV_1_OF_1 );
@@ -69,6 +66,7 @@ void  setup_progressbar()  {
   customCharset = 1;
 }
 
+
 void restore_left_focus(){
   uint8_t leftFocus[8] = {
   0b00000,
@@ -79,15 +77,18 @@ void restore_left_focus(){
   0b00100,
   0b00000,
   0b00000
-};
-lcd.createChar (6,leftFocus);
-customCharset = 0;
+  };
+  lcd.createChar (6,leftFocus);
+  customCharset = 0;
 }
+
+
 void cls(){
   lcd.clear();
   lcd.setCursor(0,0);
   redrawFull = true;
 }
+
 
 void printTime(unsigned long minutos, unsigned long aTiempo, boolean showMillis){
   //minutes
@@ -118,9 +119,9 @@ void printTime(unsigned long minutos, unsigned long aTiempo, boolean showMillis)
   }
 }
 
+
 void printBigTime(unsigned long minutos, unsigned long aTiempo, boolean showMillis){
   if (customCharset != 2)setBigChars();
-  
   //minutes
   big.writeint(1,2, minutos-aTiempo/60000, 3, true);
   lcd.setCursor(11,1);
@@ -129,8 +130,8 @@ void printBigTime(unsigned long minutos, unsigned long aTiempo, boolean showMill
   lcd.write(7);
   //Seconds
   big.writeint(1,12, 59-((aTiempo/1000)%60), 2, true);
-
 }
+
 
 void printTimeDom(unsigned long aTiempo, boolean showMillis){
   //minutes
@@ -162,6 +163,7 @@ void printTimeDom(unsigned long aTiempo, boolean showMillis){
   }
 }
 
+
 void printTeamTime(byte team) {
   unsigned long timeValue;
   if (team == 1)timeValue = greenTime;
@@ -187,6 +189,7 @@ void printTeamTime(byte team) {
     lcd.print((timeValue/1000)%60);
   }
 }
+
 
 void printHistoryTime(unsigned long timeValue) {
   if((timeValue/60000)<10)
@@ -216,7 +219,6 @@ void printHistoryTime(unsigned long timeValue) {
 }
 
 
-
 void startGameCount(){
   if (customCharset != 2)setBigChars();
   WSclsRGB();
@@ -226,28 +228,21 @@ void startGameCount(){
   lcd.setCursor(2,2);
   lcd.print(F("[Press a button]"));
   keypad.waitForKey();//if you press a button game start
-
   cls();
   lcd.setCursor(5,0);
   lcd.print(F("Starting in"));
   for(int i = 5; i > 0 ; i--){ // START COUNT GAME INIT
-    //lcd.setCursor(8,2);
-    //tone(tonepin,2000,100);
     if(soundEnable)Bbipp(100);  // -100 from delay
-    //lcd.print("In ");
-    //lcd.print(i);
     big.writeint(1,9, i, 1, false);
     delay(900);
   }
   cls();
 }
 
+
 void runLoop() {
   timer.run();
-  //loraReceive();
   checkCard();
- // lcd.setCursor(14,0);
- // lcd.print(F(">")); lcd.print(freeRam()); lcd.print(F("<"));
 
   //LoRa testing
   loraReceiveBroadcast();
@@ -278,6 +273,7 @@ void runLoop() {
   }
 }
 
+
 void setBigChars() {
   byte bar0[8] = {B11100, B11110, B11110, B11110, B11110, B11110, B11110, B11100};
   byte bar1[8] = {B00111, B01111, B01111, B01111, B01111, B01111, B01111, B00111};
@@ -298,10 +294,8 @@ void setBigChars() {
   customCharset = 2;
 }
 
-void software_Reset() // Restarts program from beginning but does not reset the peripherals and registers
-{
-  soft_reboot_flag = 0xAA;
-//digitalWrite(6, HIGH);
-asm volatile ("  jmp 0");  
 
+void software_Reset() {   // Mem clean - Restarts controller without impacting the status of peripherals and registers - basically invisible restart
+  soft_reboot_flag = 0xAA;
+  asm volatile ("  jmp 0");  
 }

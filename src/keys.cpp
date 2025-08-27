@@ -1,10 +1,6 @@
 //Used to get keys, here you can configure how works the input without modify the other code
 #include "keys.h"
 
-
-
-
-
 boolean isPressed(char key) 
 {
 
@@ -20,7 +16,6 @@ boolean isPressed(char key)
 }
 
 
-
 //This fuction compare enteredText[8] and password[8] variables
 boolean comparePassword(){
 
@@ -31,9 +26,9 @@ boolean comparePassword(){
 
 }
 
+
 //Set the password variable
 void setCode(){
-
   lcd.setCursor(0, 1);
   for(int i=0;i<8;i++){
     while(1){
@@ -56,6 +51,8 @@ void setCode(){
     }
   }
 }
+
+
 void setPass(){
   lcd.setCursor(0, 1);
   for(int i=0;i<8;i++){ 

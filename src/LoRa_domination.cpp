@@ -13,6 +13,7 @@ void LoRa_domination() {
     cleanupDominationGame();
 }
 
+
 void LoRa_handleDominationGameLoop() {
     runLoop();
     keypad.getKey(); // Get the button pressed
@@ -42,6 +43,7 @@ void LoRa_handleDominationGameLoop() {
     }
 }
 
+
 void LoRa_updateLCD() {
     if (redrawFull) {
         displayZoneStatus();
@@ -50,6 +52,7 @@ void LoRa_updateLCD() {
     LoRa_updateZoneTimes();
     updateGameTime();
 }
+
 
 void LoRa_updateZoneTimes() {
     lcd.setCursor(0, 2);
@@ -75,6 +78,7 @@ void LoRa_updateZoneTimes() {
         }
     }
 }
+
 
 void LoRa_handleZoneDefusing() {
     if (team == 0) {
@@ -137,6 +141,7 @@ void LoRa_handleZoneDefusing() {
     cls();
     WSclsRGB();
 }
+
 
 void LoRa_handleZoneCapturing() {
     if ((cancelando && team == 1) || (defuseando && team == 2)) {
@@ -206,6 +211,7 @@ void LoRa_handleZoneCapturing() {
     WSclsRGB();
 }
 
+
 void LoRa_checkGameEnd() {
     // Calculate remaining time in milliseconds
     long remainingTime = static_cast<long>(minutes * 60000) - static_cast<long>(aTime);
@@ -217,6 +223,7 @@ void LoRa_checkGameEnd() {
         LoRa_gameOver();
     }
 }
+
 
 void LoRa_gameOver() {
     if (team == 1) greenTime += millis() - iZoneTime;

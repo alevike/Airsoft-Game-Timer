@@ -19,14 +19,13 @@ bool volatile nfcEnabled __attribute__((section(".noinit")));
 boolean greenCardDetected = false;
 boolean redCardDetected = false;
 
-//
+//Memory optimization
 int freeRam() {
   extern int __heap_start, *__brkval; 
   int v; 
   return (int) &v - (__brkval == 0 ? (int) &__heap_start : (int) __brkval); 
 }
 
-//memory optimization
 boolean inGame = LOW;
 byte doAction = 0;
 
@@ -69,7 +68,7 @@ const char string_on[] = "ON";
 const char string_off[] = "OFF";
 boolean wcMenuWizard = false;
 
-//Globals for EEPROM
+//Globals for EEPROM store
 int EEPROM_GAMEMINUTES;
 int EEPROM_BOMBMINUTES;
 int EEPROM_ACTIVATESECONDS;
