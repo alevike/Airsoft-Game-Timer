@@ -1,6 +1,6 @@
 #include "AirsoftTimer_V1_4_softPower.h"
 #include "LoRa_E32.h"
-#include "spi.h"
+#include <SPI.h>
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
