@@ -1,5 +1,3 @@
-> **⚠️ Warning!** This repo is under development!
-
 # Airsoft Game Timer
 
 ## Overview
