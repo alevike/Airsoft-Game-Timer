@@ -46,26 +46,7 @@ You can upload the latest firmware to your Airsfot Timer board via FTDI adapter 
 
 ## Hardware Compatibility
 
-This software is intended to be used with a specially designed Airsoft Game Timer board, available soon on Tindie. 
-
-**Tindie link placeholder:** [Tindie Store - Airsoft Game Timer Board](https://www.tindie.com/products/your-product-id/)
-
-The firmware can also be adapted for use with a standard Arduino Mega 2560 board, but some custom features (such as battery monitoring and software managed power-on/off) will not be available.
-
-### Pin Connections (Base Arduino Mega 2560)
-
-| Module         | Pin(s)         | Notes                       |
-|----------------|----------------|-----------------------------|
-| LCD module     | rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2 | No i2c backapck required |
-| Buzzer         | 25             | Digital output              |
-| NFC Module     | IRQ: 6, RESET: 7 | Standard i2c pins + IRQ/RESET   |
-| LoRa Module    | AUX: 22, M0: 23, M1: 24 | Serial2 + custom pins |
-| Keyboard (Keypad) | Rows: 37,36,35,34<br>Cols: 33,32,31,30 | 4x4 matrix keypad |
-| LED Pixel (WS2812) | DATA: 23, Clock: 24      | NeoPixel/WS2812 strip/Apa102..     |
-| Illuminated button leds | Red: 28, Green: 29 | | 
-| Wire sensing pins | Wire1: 49 , Wire2: 48, Wire3: 47, Wire4: 46, Common: GND or 45| used in the "Cut the wire game mode" |
-
-For full pin mapping and advanced features like battery monitoring or software managed power-on/off, refer to the source code.
+This software is intended to be used with a specially designed Airsoft Game Timer board, check Wiki for details.
 
 ## License
 This project is licensed under CC BY-NC 4.0. See LICENSE for details.
