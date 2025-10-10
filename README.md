@@ -4,6 +4,11 @@
 This project is an Arduino-based Airsoft Game Timer. It supports multiple game modes and is designed for DIY use. Commercial use is prohibited (see LICENSE).
 Wiki pages are also available, check documentation periodacially. https://github.com/alevike/Airsoft-Game-Timer/wiki
 
+## Order the Assembled & Tested Airsoft Timer Board
+
+If you prefer not to build it yourself, you can order a custom-made, assembled, and preprogrammed Airsoft Timer PCB — ready to use out of the box.
+Simply drop me an email at airsofttimer[at]gmail[dot]com to discuss options, availability, and pricing.
+
 ## Uploading Firmware to the Timer Board (*or Arduino Mega)
 You can upload the latest firmware to your Airsfot Timer board via FTDI adapter using `avrdude` and the wiring protocol. This method preserves the bootloader.
 
