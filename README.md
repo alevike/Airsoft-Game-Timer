@@ -1,5 +1,7 @@
 # Airsoft Game Timer
 
+▶️ [Watch the video on YouTube](https://youtu.be/NJRsK-d7tqg)
+
 ## Overview
 This project is an Arduino-based Airsoft Game Timer. It supports multiple game modes and is designed for DIY use. Commercial use is prohibited (see LICENSE).
 Wiki pages are also available, check documentation periodacially. https://github.com/alevike/Airsoft-Game-Timer/wiki
